@@ -1,0 +1,15 @@
+#Loc,Location,Latitute,VPDF,Weather,tchng,pchng,CO2,WthFirstRow,sheetName
+5,GOL_hashemabad_99241,36.85,0.63,GOL_hashemabad_99241.xlsx,0,1,385,0,Sheet1
+6,EAZ_Tabriz_40706,38.117,0.75,EAZ_Tabriz_40706.xlsx,0,1,385,0,Sheet1
+7,HAM_Hamedan_40767,36.85,0.75,HAM_Hamdan(Airport)_40768.xlsx,0,1,385,0,Sheet1
+8,KER_Kerman_40841,30.133,0.75,KER_Kerman_40841.xlsx,0,1,385,0,Sheet1
+9,SIS_Zabol_40829,31.083,0.75,SIS_Zabol_40829.xlsx,0,1,385,0,Sheet1
+10,MAZ_gharakhil_40737,36.45,0.63,MAZ_gharakhil_40737.xlsx,0,1,385,0,Sheet1
+11,SEM_Garmsar_40758,35.24,0.75,SEM_Garmsar_40758.xlsx,0,1,385,0,Sheet1
+12,MAZ_KIASAR_40760,36.25,0.63,MAZ_KIASAR_40760.xlsx,0,1,385,0,Sheet1
+13,AQHTOGHEH,37.32,0.75,AGHTOGHE.xlsx,0,1,385,0,sheet1
+Not Read by Code,,,,,,,,,
+scenario,tchng,pchng,[CO2],,,,,,
+cur-2007,0,1,385,,,,,,
+2050-RCP4.5,1.5,1,468,,,,,,
+2050-RCP8.5,2.1,1,550,,,,,,

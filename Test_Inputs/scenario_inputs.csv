@@ -1,0 +1,11 @@
+Scenario,LocRowNo,MangRowNo,SoilRowNo,CropRowNo
+wheat-GOL-irr,5,5,11,72
+chickpea-EAZ-rfd,6,6,11,21
+potato-HAM-irr,7,7,20,49
+maizeF-KER-irr,8,8,16,26
+alfalfa-SIS-irr,9,9,25,5
+rice-MAZ-irr,10,10,38,52
+grape-SEM-irr,11,11,22,33
+orange-MAZ-irr,12,12,10,22
+peach-gorgan,5,13,11,44
+pasture-normal-gol,13,14,16,98
