@@ -1074,7 +1074,7 @@ class Crop:
                                                         "dtTSG", "dtHAR", "WTOP", "WGRN",
                                                         "HI", "ISOLWAT", "CRAIN", "CIRGW",
                                                         "IRGNO", "FATSW", "CRUNOF", "CE",
-                                                        "CTR", "CDRAIN", "ET", "E/ET",
+                                                        "CTR", "CDRAIN", "ET", "EET",
                                                         "CumIPAR", "Fi", "RUE", "WI",
                                                         "Ft", "TE", "MXLAI", "Ysalt",
                                                         "Ywet", "RAINt", "TMINt", "TMAXt",
@@ -1161,8 +1161,10 @@ class Crop:
                      "SGR": {"name": "Daily Increase in Seed", "unit": "g m-2 d-1"},
                      "WVEG": {"name": "Accumulated Vegetative", "unit": "g m-2"},
                      "WGRN": {"name": "Accumulated Grain", "unit": "g m-2"},
-                     "WTOP": {"name": "Accumulated Crop", "unit": "g m-2"}}
-        graph_y_vars = ['DTU', 'NDS', 'LAI', ['DDMP', 'SGR'],
+                     "WTOP": {"name": "Accumulated Crop", "unit": "g m-2"},
+                     "TR": {"name": "Transpiration"},
+                     "PET": {"name": "Potential Evapotranspiration"}}
+        graph_y_vars = ['DTU', 'NDS', 'LAI', ['DDMP', 'SGR'], ['TR', 'PET'],
                         ['WVEG', 'WGRN', 'WTOP']]
         for y_var in graph_y_vars:
                 xaxis_title = 'Days After Planting (DAP)'
@@ -1191,7 +1193,7 @@ class Crop:
                     data.append(trace_temp)
                 layout = go.Layout(title=title, xaxis=dict(title=xaxis_title),
                                    yaxis=dict(title=yaxis_title),
-                                   autosize=False, width=1500, height=1000)
+                                   autosize=True)
                 fig = go.Figure(data=data, layout=layout)
                 self.daily_graphs_output.append(fig)
                 self.daily_graphs_ids.append('{}_{}_{}_DAP'.format(self.scenario_name, year, yname))
@@ -1202,8 +1204,11 @@ class Crop:
         self.summary_graphs_ids = []
         x_graph = df['Pyear'].values.tolist()
         name_dict = {"WGRN": {"name": "Accumulated Grain", "unit": "g m-2"},
-                     "WTOP": {"name": "Accumulated Crop", "unit": "g m-2"}}
-        graph_y_vars = [['WGRN', 'WTOP']]
+                     "WTOP": {"name": "Accumulated Crop", "unit": "g m-2"},
+                     "TE": {"name": "Transpiration"},
+                     "ET": {"name": "Evapotranspiration"},
+                     "EET": {"name": "E/ET Ratio"}}
+        graph_y_vars = [['WGRN', 'WTOP'], ['TE', 'ET'], ['TE', 'EET']]
         for y_var in graph_y_vars:
                 xaxis_title = 'Simulation Year'
                 if isinstance(y_var, list):
@@ -1214,9 +1219,8 @@ class Crop:
                     data = []
                     for y in y_var:
                         y_graph = df[y].values.tolist()
-                        trace_temp = go.Scatter(x=x_graph, y=y_graph,
-                                                mode='markers',
-                                                name='{}'.format(y))
+                        trace_temp = go.Bar(x=x_graph, y=y_graph,
+                                            name='{}'.format(y))
                         data.append(trace_temp)
                 else:
                     yname = str(y_var)
@@ -1225,13 +1229,12 @@ class Crop:
                     yaxis_title = '{}'.format(tname)
                     data = []
                     y_graph = df[y_var].values.tolist()
-                    trace_temp = go.Scatter(x=x_graph, y=y_graph,
-                                            mode='markers',
-                                            name='{}'.format(y_var))
+                    trace_temp = go.Bar(x=x_graph, y=y_graph,
+                                        name='{}'.format(y_var))
                     data.append(trace_temp)
                 layout = go.Layout(title=title, xaxis=dict(title=xaxis_title),
                                    yaxis=dict(title=yaxis_title),
-                                   autosize=False, width=1500, height=1000)
+                                   autosize=True)
                 fig = go.Figure(data=data, layout=layout)
                 self.summary_graphs_output.append(fig)
                 self.summary_graphs_ids.append('{}_{}'.format(self.scenario_name, yname))
